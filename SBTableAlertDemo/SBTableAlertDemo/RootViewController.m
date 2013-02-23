@@ -125,12 +125,17 @@
 	
 	if (tableAlert.view.tag == 0 || tableAlert.view.tag == 1) {
 		cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil] autorelease];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
 	} else {
 		// Note: SBTableAlertCell
 		cell = [[[SBTableAlertCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil] autorelease];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
 	}
 	
 	[cell.textLabel setText:[NSString stringWithFormat:@"Cell %d", indexPath.row]];
+    if([[tableAlert.tableView indexPathsForSelectedRows] containsObject:indexPath]) {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    }
 	
 	return cell;
 }
@@ -161,14 +166,17 @@
 - (void)tableAlert:(SBTableAlert *)tableAlert didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	if (tableAlert.type == SBTableAlertTypeMultipleSelct) {
 		UITableViewCell *cell = [tableAlert.tableView cellForRowAtIndexPath:indexPath];
-		if (cell.accessoryType == UITableViewCellAccessoryNone)
-			[cell setAccessoryType:UITableViewCellAccessoryCheckmark];
-		else
-			[cell setAccessoryType:UITableViewCellAccessoryNone];
-		
-		[tableAlert.tableView deselectRowAtIndexPath:indexPath animated:YES];
+        [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
 	}
 }
+
+- (void)tableAlert:(SBTableAlert *)tableAlert didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
+	if (tableAlert.type == SBTableAlertTypeMultipleSelct) {
+		UITableViewCell *cell = [tableAlert.tableView cellForRowAtIndexPath:indexPath];
+        [cell setAccessoryType:UITableViewCellAccessoryNone];
+	}
+}
+
 
 - (void)tableAlert:(SBTableAlert *)tableAlert didDismissWithButtonIndex:(NSInteger)buttonIndex {
 	NSLog(@"Dismissed: %i", buttonIndex);

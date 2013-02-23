@@ -59,6 +59,7 @@ typedef enum {
 - (CGFloat)tableAlert:(SBTableAlert *)tableAlert heightForRowAtIndexPath:(NSIndexPath *)indexPath;
 
 - (void)tableAlert:(SBTableAlert *)tableAlert didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
+- (void)tableAlert:(SBTableAlert *)tableAlert didDeselectRowAtIndexPath:(NSIndexPath *)indexPath;
 - (void)tableAlertCancel:(SBTableAlert *)tableAlert;
 
 - (void)tableAlert:(SBTableAlert *)tableAlert clickedButtonAtIndex:(NSInteger)buttonIndex;

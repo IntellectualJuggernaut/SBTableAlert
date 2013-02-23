@@ -349,6 +349,10 @@
 	[_alertView setDelegate:alertViewDelegate];
 }
 
+-(void)setType:(SBTableAlertType)type {
+    _type = type;
+    self.tableView.allowsMultipleSelection = (type == SBTableAlertTypeMultipleSelct);
+}
 
 #pragma mark - Private
 
@@ -429,6 +433,12 @@
 	
 	if ([_delegate respondsToSelector:@selector(tableAlert:didSelectRowAtIndexPath:)])
 		[_delegate tableAlert:self didSelectRowAtIndexPath:indexPath];
+}
+
+-(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if([_delegate respondsToSelector:@selector(tableAlert:didDeselectRowAtIndexPath:)]) {
+        [_delegate tableAlert:self didDeselectRowAtIndexPath:indexPath];
+    }
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
