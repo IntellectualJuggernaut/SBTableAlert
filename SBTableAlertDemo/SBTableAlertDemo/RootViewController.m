@@ -76,7 +76,7 @@
 		[alert.view setTag:1];
 	} else if ([indexPath row] == 0) {
 		alert	= [[SBTableAlert alloc] initWithTitle:@"Multiple Select" cancelButtonTitle:@"Cancel" messageFormat:@"Select multiple rows!"];
-		[alert setType:SBTableAlertTypeMultipleSelct];
+		[alert setType:SBTableAlertTypeMultipleSelect];
 		[alert.view addButtonWithTitle:@"OK"];
 		[alert.view setTag:0];
 	} else if ([indexPath row] == 2) {
@@ -164,14 +164,14 @@
 #pragma mark - SBTableAlertDelegate
 
 - (void)tableAlert:(SBTableAlert *)tableAlert didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	if (tableAlert.type == SBTableAlertTypeMultipleSelct) {
+	if (tableAlert.type == SBTableAlertTypeMultipleSelect) {
 		UITableViewCell *cell = [tableAlert.tableView cellForRowAtIndexPath:indexPath];
         [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
 	}
 }
 
 - (void)tableAlert:(SBTableAlert *)tableAlert didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
-	if (tableAlert.type == SBTableAlertTypeMultipleSelct) {
+	if (tableAlert.type == SBTableAlertTypeMultipleSelect) {
 		UITableViewCell *cell = [tableAlert.tableView cellForRowAtIndexPath:indexPath];
         [cell setAccessoryType:UITableViewCellAccessoryNone];
 	}

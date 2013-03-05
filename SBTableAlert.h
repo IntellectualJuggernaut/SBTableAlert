@@ -34,7 +34,7 @@
 
 typedef enum {
 	SBTableAlertTypeSingleSelect, // dismiss alert with button index -1 and animated (default)
-	SBTableAlertTypeMultipleSelct, // dismiss handled by user eg. [alert.view dismiss...];
+	SBTableAlertTypeMultipleSelect, // dismiss handled by user eg. [alert.view dismiss...];
 } SBTableAlertType;
 
 typedef enum {

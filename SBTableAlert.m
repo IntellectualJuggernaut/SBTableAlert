@@ -351,7 +351,7 @@
 
 -(void)setType:(SBTableAlertType)type {
     _type = type;
-    self.tableView.allowsMultipleSelection = (type == SBTableAlertTypeMultipleSelct);
+    self.tableView.allowsMultipleSelection = (type == SBTableAlertTypeMultipleSelect);
 }
 
 #pragma mark - Private
